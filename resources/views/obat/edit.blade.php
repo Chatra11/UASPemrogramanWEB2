@@ -22,6 +22,10 @@
             <td><input type="number" name="stok" min ="0" max="1000" value="{{$model->Stok}}"required> <br></td>
         </tr>
         <tr>
+            <td>Foto Obat</td>
+            <td><input type="file" name="foto" required> <br></td>
+        </tr>
+        <tr>
             <td>Harga</td>
             <td><input type="text" name="harga" required value = "{{$model->Harga}}"> <br></td>
         </tr>

@@ -10,7 +10,7 @@
                 <th>Stok</th>
                 <th>Foto</th>
                 <th>Harga</th>
-                <th>Aksi</th>
+                <th colspan="2">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +20,21 @@
                 <td>{{$value->Supplier_id}}</td>
                 <td>{{$value->Nama_obat}}</td>
                 <td>{{$value->Stok}}</td>
-                <td>{{$value->Foto}}</td>
+                <td>
+                    @if(strlen($value->Foto)>0)
+                        <img src="{{ asset('Foto/'.$value->Foto) }}" />
+                    @endif
+                </td>
                 <td>{{$value->Harga}}</td>
-                <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id.'/edit')}}">Edit</a>
-                    <a class="btn btn-danger">Delete</a></td>
+                <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id.'/edit')}}">Edit</a></td>
+                <td>    
+                
+                    <form action="{{url('Obat/'.$value->id) }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger" type= "submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
             <a class="btn btn-info"  href="{{url('Obat\create')}}">Tambah</a> <br></br>
