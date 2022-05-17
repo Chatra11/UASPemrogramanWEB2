@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Obat extends Model
 {
     use HasFactory;
-    protected $table = "obat";
+    protected $table = "_obat";
 }

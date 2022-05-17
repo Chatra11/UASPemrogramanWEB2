@@ -9,6 +9,10 @@
                 <td><input type="text" name="kode"> <br></td>
             </tr>
             <tr>
+                <td>Id Supplier</td>
+                <td><input type="text" name="suplier" required> <br></td>
+            </tr>
+            <tr>
                 <td>Nama Obat</td>
                 <td><input type="text" name="nama" required> <br></td>
             </tr>
@@ -22,7 +26,7 @@
             </tr>
             <tr>
                 <td>
-                    <button type="submit" name="submit">Tambah</button>" 
+                    <button type="submit" name="submit">Tambah</button> 
                 </td>
             </tr>
         </table>

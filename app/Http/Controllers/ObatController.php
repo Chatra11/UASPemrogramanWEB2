@@ -39,7 +39,8 @@ class ObatController extends Controller
     {
         $model = new Obat;
         $model->Kode_Obat = $request->kode;
-        $model->Nama_Obat = $request->nama;
+        $model->Supplier_id = $request->suplier;
+        $model->Nama_obat = $request->nama;
         $model->Stok = $request->stok;
         $model->Harga = $request->harga;
         $model->save();
@@ -64,9 +65,9 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_obat)
+    public function edit($id)
     {
-        $model = Obat::find($id_obat);
+        $model = Obat::find($id);
         return view('obat.edit',compact('model'));
     }
 
@@ -77,14 +78,17 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_obat)
+    public function update(Request $request, $id)
     {
-        $model = Obat::find($id_obat);
+        $model = Obat::find($id);
         $model->Kode_Obat = $request->kode;
+        $model->Supplier_id = $request->suplier;
         $model->Nama_Obat = $request->nama;
         $model->Stok = $request->stok;
         $model->Harga = $request->harga;
         $model->save();
+
+        return redirect('Obat');
     }
 
     /**
@@ -93,7 +97,7 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_obat)
+    public function destroy($id)
     {
         //
     }

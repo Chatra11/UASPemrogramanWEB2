@@ -5,8 +5,10 @@
         <thead>
             <tr>
                 <th>Kode Obat</th>
+                <th>Id Supplier</th>
                 <th>Nama Obat</th>
                 <th>Stok</th>
+                <th>Foto</th>
                 <th>Harga</th>
                 <th>Aksi</th>
             </tr>
@@ -15,10 +17,12 @@
             @foreach($data_obat as $key=>$value)
             <tr>
                 <td>{{$value->Kode_Obat}}</td>
-                <td>{{$value->Nama_Obat}}</td>
+                <td>{{$value->Supplier_id}}</td>
+                <td>{{$value->Nama_obat}}</td>
                 <td>{{$value->Stok}}</td>
+                <td>{{$value->Foto}}</td>
                 <td>{{$value->Harga}}</td>
-                <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id_obat.'/edit')}}">Edit</a>
+                <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id.'/edit')}}">Edit</a>
                     <a class="btn btn-danger">Delete</a></td>
             </tr>
             @endforeach

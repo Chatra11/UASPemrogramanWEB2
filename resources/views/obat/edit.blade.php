@@ -1,18 +1,21 @@
 @extends('layout.main')
 
 @section('obat')
-<form method="POST" action="{{url('Obat/'.$model->id_obat) }}">
+<form method="POST" action="{{url('Obat/'.$model->id) }}">
     @csrf
-    @method('PATCH')
-    <!-- <input type="hidden"name="_method"values="PATCH"> -->
+    @method('PUT')
     <table>
         <tr>
             <td>Kode Obat</td>
             <td><input type="text" name="kode" value="{{$model->Kode_Obat}}"> <br></td>
         </tr>
         <tr>
+            <td>Id Supplier</td>
+            <td><input type="text" name="suplier" value="{{$model->Supplier_id}}"required> <br></td>
+        </tr>
+        <tr>
             <td>Nama Obat</td>
-            <td><input type="text" name="nama" value="{{$model->Nama_Obat}}"required> <br></td>
+            <td><input type="text" name="nama" value="{{$model->Nama_obat}}"required> <br></td>
             </tr>
         <tr>
             <td>Stok</td>
