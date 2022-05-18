@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('obat')
-<form method="POST"action="{{url('Obat')}}"enctype="multipart/form-data">
+<form method="POST" action="{{url('Obat')}}"enctype="multipart/form-data">
     @csrf
     <table>
             <tr>

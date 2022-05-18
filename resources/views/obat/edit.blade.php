@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td>Foto Obat</td>
-            <td><input type="file" name="foto" required> <br></td>
+            <td><input type="file" name="foto" value = "{{$model->Foto}}"required> <br></td>
         </tr>
         <tr>
             <td>Harga</td>

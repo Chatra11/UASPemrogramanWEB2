@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Obat;
-use App\Http\Requests\PegawaiRequest;
+use App\Http\Requests\ObatRequest;
 use Illuminate\Support\Facades\File;
 
 class ObatController extends Controller
@@ -43,16 +43,14 @@ class ObatController extends Controller
         $model->Kode_Obat = $request->kode;
         $model->Supplier_id = $request->suplier;
         $model->Nama_obat = $request->nama;
-        $model->Stok = $request->stok;
-
+        $model->Stok = $request->stok;        
+        $model->Harga = $request->harga;
         if($request->file('Foto')){
             $file = $request->file('Foto');
             $nama_file = time().str_replace(" ", "", $file->getClientOriginalName());
-            $file->move('foto', $nama_file);
+            $image = $file->storeAs('foto', $nama_file);
             $model->Foto = $nama_file;
         }
-        
-        $model->Harga = $request->harga;
         $model->save();
 
         return redirect('Obat');
@@ -99,9 +97,10 @@ class ObatController extends Controller
         if($request->file('Foto')){
             $file = $request->file('Foto');
             $nama_file = time().str_replace(" ", "", $file->getClientOriginalName());
-            $file->move('Foto', $nama_file);
+            $file->storeAs('foto', $nama_file);
+            $model->Foto = $nama_file;
 
-            File::delete('Foto/'.$model->Foto);
+            File::delete('foto/'.$model->Foto);
             $model->Foto = $nama_file;
         }
 

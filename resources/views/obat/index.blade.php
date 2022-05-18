@@ -22,7 +22,7 @@
                 <td>{{$value->Stok}}</td>
                 <td>
                     @if(strlen($value->Foto)>0)
-                        <img src="{{ asset('Foto/'.$value->Foto) }}" />
+                        <img src="{{ asset('storage/foto/'.$value->Foto) }}" width="40px" height="30px" />
                     @endif
                 </td>
                 <td>{{$value->Harga}}</td>

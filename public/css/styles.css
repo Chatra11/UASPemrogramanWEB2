@@ -11327,3 +11327,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     margin-left: -15rem;
   }
 }
+img{
+  max-width: 20px;
+  max-height: 30px;
+}
