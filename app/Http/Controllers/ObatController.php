@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Obat;
-use App\Http\Requests\ObatRequest;
 use Illuminate\Support\Facades\File;
 
 class ObatController extends Controller
