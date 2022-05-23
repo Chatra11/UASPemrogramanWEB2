@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\jualController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\satuanController;
 use App\Http\Controllers\supplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +23,5 @@ Route::get('/', function () {
 
 Route::resource('Obat', ObatController::class);
 Route::resource('Supplier', supplierController::class);
+Route::resource('Satuan', satuanController::class);
+Route::resource('Jual', jualController::class);

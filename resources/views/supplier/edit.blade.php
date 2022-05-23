@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('supplai')
+@section('content')
 <form method="POST" action="{{url('Supplier/'.$model->id) }}">
     @csrf
     @method('PUT')

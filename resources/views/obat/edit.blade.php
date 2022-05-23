@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('obat')
+@section('content')
 <form method="POST" action="{{url('Obat/'.$model->id) }}">
     @csrf
     @method('PUT')

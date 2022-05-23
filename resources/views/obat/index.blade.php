@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('obat')
+@section('content')
     <h2 style= "text-align:Center">Obat</h2>
     <table class="table-bordered table">
         <thead>

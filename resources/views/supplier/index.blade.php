@@ -1,10 +1,10 @@
 @extends('layout.main')
-@section('supplai')
+@section('content')
 <h2 style= "text-align:Center">Supplai</h2>
     <table class="table-bordered table">
         <thead>
             <tr>
-                <th>Id Supplier</th>
+                <th>No</th>
                 <th>Nama Supplier</th>
                 <th>Alamat</th>
                 <th>Telepon</th>
