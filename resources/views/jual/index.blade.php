@@ -11,6 +11,7 @@
                 <th colspan="2">Aksi</th>
             </tr>
         </thead>
+        
         <tbody>
             @foreach($dataJual as $key=>$value)
             <tr>
