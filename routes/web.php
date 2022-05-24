@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\jualController;
 use App\Http\Controllers\ObatController;
 use App\Http\Controllers\satuanController;
 use App\Http\Controllers\supplierController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Obat', ObatController::class);
-Route::resource('Supplier', supplierController::class);
-Route::resource('Satuan', satuanController::class);
-Route::resource('Jual', jualController::class);
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/registeruser', [LoginController::class, 'registeruser'])->name('registeruser');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::resource('Obat', ObatController::class)->middleware('auth');
+Route::resource('Supplier', supplierController::class)->middleware('auth');
+Route::resource('Satuan', satuanController::class)->middleware('auth');
+Route::resource('Jual', jualController::class)->middleware('auth');
