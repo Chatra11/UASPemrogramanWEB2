@@ -1,9 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-<form method="POST" action="{{url('Supplier/'.$model->id) }}">
+<form method="POST" action="{{url('Supplier')}}"enctype="multipart/form-data">
     @csrf
-    @method('PUT')
     @include('supplier.form')
 </form>
 @endsection

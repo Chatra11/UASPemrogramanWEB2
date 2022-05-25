@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ObatRequest;
 use Illuminate\Http\Request;
 use App\Models\Obat;
 use Illuminate\Support\Facades\File;
@@ -13,10 +14,16 @@ class ObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_obat = Obat::all();
-        return view('obat.index',compact('data_obat'));
+        $keyword = $request->keyword;
+        // $data_obat = Obat::all();
+        $data_obat = Obat::where('Kode_Obat',"LIKE",'%'.$keyword.'%')
+            ->orWhere('Nama_obat',"LIKE",'%'.$keyword.'%')
+            ->paginate(2);
+        $data_obat->withPath('Obat');
+        $data_obat->append($request->all());
+        return view('obat.index',compact('data_obat','keyword'));
     }
 
     /**
@@ -27,7 +34,7 @@ class ObatController extends Controller
     public function create()
     {
         $model = new Obat;
-        return view('obat.form',compact('model'));
+        return view('obat.create',compact('model'));
     }
 
     /**
@@ -36,23 +43,17 @@ class ObatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ObatRequest $request)
     {
         $model = new Obat;
-        $model->Kode_Obat = $request->kode;
-        $model->Supplier_id = $request->suplier;
-        $model->Nama_obat = $request->nama;
-        $model->Stok = $request->stok;        
-        $model->Harga = $request->harga;
-        if($request->file('Foto')){
-            $file = $request->file('Foto');
-            $nama_file = time().str_replace(" ", "", $file->getClientOriginalName());
-            $image = $file->storeAs('foto', $nama_file);
-            $model->Foto = $nama_file;
-        }
+        $model->Kode_Obat = $request->Kode_Obat;
+        $model->Supplier_id = $request->Supplier_id;
+        $model->Nama_obat = $request->Nama_obat;
+        $model->Stok = $request->Stok;        
+        $model->Harga = $request->Harga;
         $model->save();
 
-        return redirect('Obat');
+        return redirect('Obat')->with('success','Data Berhasil Di Simpan');
     }
 
     /**
@@ -85,28 +86,17 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ObatRequest $request, $id)
     {
         $model = Obat::find($id);
-        $model->Kode_Obat = $request->kode;
-        $model->Supplier_id = $request->suplier;
-        $model->Nama_Obat = $request->nama;
-        $model->Stok = $request->stok;
-
-        if($request->file('Foto')){
-            $file = $request->file('Foto');
-            $nama_file = time().str_replace(" ", "", $file->getClientOriginalName());
-            $file->storeAs('foto', $nama_file);
-            $model->Foto = $nama_file;
-
-            File::delete('foto/'.$model->Foto);
-            $model->Foto = $nama_file;
-        }
-
-        $model->Harga = $request->harga;
+        $model->Kode_Obat = $request->Kode_Obat;
+        $model->Supplier_id = $request->Supplier_id;
+        $model->Nama_Obat = $request->Nama_obat;
+        $model->Stok = $request->Stok;
+        $model->Harga = $request->Harga;
         $model->save();
 
-        return redirect('Obat');
+        return redirect('Obat')->with('success','Data Berhasil Di Perbaharui');
     }
 
     /**

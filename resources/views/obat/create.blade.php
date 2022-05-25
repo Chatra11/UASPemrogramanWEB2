@@ -1,9 +1,9 @@
 @extends('layout.main')
 
 @section('content')
-<form method="POST" action="{{url('Obat/'.$model->id) }}">
+
+<form method="POST" action="{{url('Obat')}}">
     @csrf
-    @method('PUT')
     @include('obat.form')
 </form>
 @endsection

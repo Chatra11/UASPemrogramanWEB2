@@ -8,6 +8,7 @@
         <title>Sistem Informasi Apotek</title>
         <!-- Favicon-->
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
     </head>
     <body>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SupplierRequest;
 use Illuminate\Http\Request;
 use App\Models\Supplier as ModelsSupplier;
 
@@ -12,10 +13,16 @@ class supplierController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data_supplai = ModelsSupplier::all();
-        return view('supplier.index',compact('data_supplai'));
+        $keyword = $request->keyword;
+        $data_supplai = ModelsSupplier::where('Nama_Supplier',"LIKE",'%'.$keyword.'%')
+            ->orWhere('Telepon',"LIKE",'%'.$keyword.'%')
+            ->orWhere('Alamat',"LIKE",'%'.$keyword.'%')
+            ->paginate(1);
+        $data_supplai->withPath('Supplier');
+        $data_supplai->append($request->all());
+        return view('supplier.index',compact('data_supplai','keyword'));
     }
 
     /**
@@ -26,7 +33,7 @@ class supplierController extends Controller
     public function create()
     {
         $model = new ModelsSupplier;
-        return view('supplier.form',compact('model'));
+        return view('supplier.create',compact('model'));
     }
 
     /**
@@ -35,15 +42,15 @@ class supplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SupplierRequest $request)
     {
         $model = new ModelsSupplier;
-        $model->Nama_Supplier = $request->nama_supplai;
-        $model->Alamat = $request->alamat_supplai;
-        $model->Telepon = $request->telepon_supplai;
+        $model->Nama_Supplier = $request->Nama_Supplier;
+        $model->Alamat = $request->Alamat;
+        $model->Telepon = $request->Telepon;
         $model->save();
 
-        return redirect('Supplier');
+        return redirect('Supplier')->with('success','Data Berhasil Di Simpan');
     }
 
     /**
@@ -76,7 +83,7 @@ class supplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SupplierRequest $request, $id)
     {
         $model = ModelsSupplier::find($id);
         $model->Nama_Supplier = $request->nama_supplai;
@@ -84,7 +91,7 @@ class supplierController extends Controller
         $model->Telepon = $request->telepon_supplai;
         $model->save();
 
-        return redirect('Supplier');
+        return redirect('Supplier')->with('success','Data Berhasil Di Perbaharui');
     }
 
     /**

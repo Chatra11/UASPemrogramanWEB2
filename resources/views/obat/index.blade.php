@@ -1,6 +1,15 @@
 @extends('layout.main')
 @section('content')
-    <h2 style= "text-align:Center">Obat</h2>
+    @if(Session::has('success'))
+        <p class ="alert alert-success">{{ Session::get('success')}}</p>
+    @endif
+    <a class="btn btn-info"  href="{{url('Obat\create')}}">Tambah</a> <br></br>
+    </br>
+    <form method="GET" action="{{url('Obat')}}" >
+        <input type="text"name ="keyword" value="{{ $keyword }}"/>
+        <button type ="submit">Search</button>
+    </form>
+    </br>
     <table class="table-bordered table">
         <thead>
             <tr>
@@ -37,7 +46,7 @@
                 </td>
             </tr>
             @endforeach
-            <a class="btn btn-info"  href="{{url('Obat\create')}}">Tambah</a> <br></br>
         </tbody>
     </table>
+    {{$data_obat->links('pagination::bootstrap-4')}}
 @endsection
