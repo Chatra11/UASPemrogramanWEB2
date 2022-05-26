@@ -4,8 +4,7 @@
       <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Kode_Obat" value="{{$model->Kode_Obat}}">
       @foreach($errors->get('Kode_Obat') as $msg)
             <p class="text-danger">{{ $msg }}</p>
-        @endforeach
-    
+        @endforeach    
     </div>
   </div>
   <div class="form-group row">
@@ -20,7 +19,23 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Supplier</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Supplier_id" value="{{$model->Supplier_id}}">
+    <select  class="form-control form-control-sm" name="id_supplai" id="id_supplai">
+        <option value="">--Pilih Supplier--</option>
+        @foreach($supplai as $value)
+            <option value="{{$value->id}}">{{$value->Nama_Supplier}}</option>
+        @endforeach
+    </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Satuan</label>
+    <div class="col-sm-10">
+    <select name="id_satuan" class="form-control form-control-sm" id="colFormLabelSm">
+        <option value="">--Pilih Satuan--</option>
+        @foreach($satuan as $value)
+            <option value="{{$value->id}}">{{$value->Nama_satuan}}</option>
+        @endforeach
+    </select>
     </div>
   </div>
   <div class="form-group row">

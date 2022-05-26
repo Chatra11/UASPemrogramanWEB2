@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('_obat', function (Blueprint $table) {
-            $table->string('Foto')->nullable();
-            $table->string('Nama_Satuan');
-            $table->dropColumn('Foto');
-            $table->dropColumn('timestamps');
+            $table->dropColumn('Supplier_id');
+            $table->bigInteger('id_supplai');
         });
     }
 

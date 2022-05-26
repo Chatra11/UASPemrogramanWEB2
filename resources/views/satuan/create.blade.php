@@ -1,9 +1,8 @@
 @extends('layout.main')
 
 @section('content')
-<form method="POST" action="{{url('Satuan/'.$model->id) }}">
+<form method="POST" action="{{url('Satuan')}}"enctype="multipart/form-data">
     @csrf
-    @method('PUT')
     @include('satuan.form')
 </form>
 @endsection

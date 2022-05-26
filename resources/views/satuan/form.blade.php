@@ -1,18 +1,10 @@
-@extends('layout.main')
-
-@section('content')
-<form method="POST" action="{{url('Satuan')}}"enctype="multipart/form-data">
-    @csrf
-    <table>
-            <tr>
-                <td>Nama Satuan</td>
-                <td><input type="text" name="nama" required> <br></td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="submit" name="submit">Tambah</button> 
-                </td>
-            </tr>
-        </table>
-</form>
-@endsection
+<div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nama Satuan</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Nama_satuan" value="{{$model->Nama_satuan}}">
+        @foreach($errors->get('Nama_satuan') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+        @endforeach    
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">SIMPAN</button>

@@ -9,4 +9,8 @@ class Supplier extends Model
 {
     use HasFactory;
     protected $table = "supplier";
+
+    public function obat(){
+        return $this->hasMany(Obat::class);
+    }
 }

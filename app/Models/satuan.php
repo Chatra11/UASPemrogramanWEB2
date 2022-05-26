@@ -9,4 +9,8 @@ class satuan extends Model
 {
     use HasFactory;
     protected $table = "satuan";
+
+    public function obat(){
+        return $this->hasMany(Obat::class);
+    }
 }

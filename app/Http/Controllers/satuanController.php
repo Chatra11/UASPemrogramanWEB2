@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\satuanRequest;
 use App\Models\satuan;
 use Illuminate\Http\Request;
 
@@ -12,10 +13,14 @@ class satuanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datasatuan = satuan::all();
-        return view('satuan.index',compact('datasatuan'));
+        $keyword = $request->keyword;
+        $datasatuan = satuan::where('Nama_satuan',"LIKE",'%'.$keyword.'%')
+        ->paginate(1);
+        $datasatuan->withPath('Satuan');
+        $datasatuan->append($request->all());
+        return view('satuan.index',compact('datasatuan','keyword'));
     }
 
     /**
@@ -26,7 +31,7 @@ class satuanController extends Controller
     public function create()
     {
         $model = new satuan;
-        return view('satuan.form',compact('model'));
+        return view('satuan.create',compact('model'));
     }
 
     /**
@@ -35,13 +40,13 @@ class satuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(satuanRequest $request)
     {
         $model = new satuan;
-        $model->Nama_satuan = $request->nama;
+        $model->Nama_satuan = $request->Nama_satuan;
         $model->save();
 
-        return redirect('Satuan');
+        return redirect('Satuan')->with('success','Data Berhasil Di Simpan');
     }
 
     /**
@@ -74,13 +79,13 @@ class satuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(satuanRequest $request, $id)
     {
         $model = satuan::find($id);
         $model->Nama_satuan = $request->nama;
         $model->save();
 
-        return redirect('Satuan');
+        return redirect('Satuan')->with('success','Data Berhasil Di Perbaharui');
     }
 
     /**

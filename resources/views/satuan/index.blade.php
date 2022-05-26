@@ -1,5 +1,15 @@
 @extends('layout.main')
 @section('content')
+    @if(Session::has('success'))
+        <p class ="alert alert-success">{{ Session::get('success')}}</p>
+    @endif
+    <a class="btn btn-info"  href="{{url('Satuan\create')}}">Tambah</a> <br></br>
+    </br>
+    <form method="GET" action="{{url('Satuan')}}" >
+        <input type="text"name ="keyword" value="{{ $keyword }}"/>
+        <button type ="submit">Search</button>
+    </form>
+    </br>
     <h2 style= "text-align:Center">Obat</h2>
     <table class="table-bordered table">
         <thead>
@@ -24,7 +34,7 @@
                 </td>
             </tr>
             @endforeach
-            <a class="btn btn-info"  href="{{url('Satuan\create')}}">Tambah</a> <br></br>
         </tbody>
     </table>
+    {{$datasatuan->links('pagination::bootstrap-4')}}
 @endsection
