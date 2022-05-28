@@ -13,20 +13,47 @@
     </head>
     <body>
         <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Sistem Informasi Apotek</div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('/')}}">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Obat')}}">Data Obat</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Satuan')}}">Satuan Obat</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Jual')}}">Penjualan</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Supplier')}}">Data Supplier</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('/logout')}}">Logout</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
-                </div>
+            <!-- Sidebar -->
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id = "sidebar-wrapper" style="width: 250px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-4">Sistem Informasi Apotek</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active" aria-current="page">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Obat" class="nav-link text-white">
+                        Data Obat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Satuan" class="nav-link text-white">
+                        Satuan Obat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Jual" class="nav-link text-white">
+                        Penjualan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Supplier" class="nav-link text-white">
+                        Data Supplier
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-white">
+                        Logout
+                        </a>
+                    </li>
+                    
+                </ul>
             </div>
+
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
