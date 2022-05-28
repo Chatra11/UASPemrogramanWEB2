@@ -105,6 +105,6 @@ class supplierController extends Controller
         $model = ModelsSupplier::find($id);
         $model->delete();
 
-        return redirect('Supplier');
+        return redirect('Supplier')->with('success','Data Berhasil Di Hapus');
     }
 }

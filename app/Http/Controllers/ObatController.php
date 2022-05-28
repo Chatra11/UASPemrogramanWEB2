@@ -117,7 +117,7 @@ class ObatController extends Controller
         $model = Obat::find($id);
         $model->delete();
 
-        return redirect('Obat');
+        return redirect('Obat')->with('success','Data Berhasil Di Hapus');
 
     }
 }

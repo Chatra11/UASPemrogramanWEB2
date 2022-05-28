@@ -16,9 +16,10 @@
             @foreach($dataJual as $key=>$value)
             <tr>
                 <td>{{$value->No_Nota}}</td>
+                <td>{{$value->obat->Nama_obat}}</td>
                 <td>{{$value->jumlah}}</td>
                 <td>{{$value->tanggal}}</td>
-                <td>{{$value->total}}</td>
+                <td>{{($value->getTotalHarga())}}</td>
                 <td><a class="btn btn-info" href="{{ url('Satuan/'.$value->id.'/edit')}}">Edit</a></td>
                 <td>    
                     <form action="{{url('Satuan/'.$value->id) }}" method="POST">

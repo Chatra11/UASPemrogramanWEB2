@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Obat;
 use App\Models\Penjualan;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class jualController extends Controller
     public function index()
     {
         $dataJual = Penjualan::all();
-        return view('jual.index',compact('dataJual'));
+        $obat = Penjualan::with('obat')->get();
+        return view('jual.index',compact('dataJual','obat'));
     }
 
     /**
@@ -26,7 +28,8 @@ class jualController extends Controller
     public function create()
     {
         $model = new Penjualan;
-        return view('jual.form',compact('model'));
+        $obat = Obat::all();
+        return view('jual.create',compact('model','obat'));
     }
 
     /**
@@ -38,10 +41,11 @@ class jualController extends Controller
     public function store(Request $request)
     {
         $model = new Penjualan;
-        $model->No_Nota = $request->nota;
+        $model->No_Nota = $request->No_Nota;
+        $model->id_harga = $request->id_harga;
         $model->jumlah = $request->jumlah;
         $model->tanggal = $request->tanggal;
-        $model-> total = $model->jumlah * 200;
+        $model-> total =  $request->jumlah;
         $model->save();
 
         return redirect('Jual');
@@ -67,7 +71,8 @@ class jualController extends Controller
     public function edit($id)
     {
         $model = Penjualan::find($id);
-        return view('jual.edit',compact('model'));
+        $obat = Obat::all();
+        return view('jual.edit',compact('model','obat'));
     }
 
     /**

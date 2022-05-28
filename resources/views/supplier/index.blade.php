@@ -29,7 +29,7 @@
                 <td><a class="btn btn-info" href="{{ url('Supplier/'.$value->id.'/edit')}}">Edit</a></td>
                 <td>    
                 
-                    <form action="{{url('Supplier/'.$value->id) }}" method="POST">
+                    <form action="{{url('Supplier/'.$value->id) }}" method="POST" onsubmit="return confirm('Lanjut Hapus Data ?')">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
                     <button class="btn btn-danger" type= "submit">Delete</button>

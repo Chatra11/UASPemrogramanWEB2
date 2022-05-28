@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('_obat', function (Blueprint $table) {
-            $table->dropColumn('Supplier_id');
-            $table->bigInteger('id_supplai');
+        Schema::table('penjualan', function (Blueprint $table) {
+            $table->bigInteger('id_harga');
         });
     }
 

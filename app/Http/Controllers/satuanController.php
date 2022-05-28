@@ -99,6 +99,6 @@ class satuanController extends Controller
         $model = satuan::find($id);
         $model->delete();
 
-        return redirect('Satuan');
+        return redirect('Satuan')->with('success','Data Berhasil Di Hapus');
     }
 }
