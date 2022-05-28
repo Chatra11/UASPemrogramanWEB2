@@ -13,39 +13,76 @@
     </head>
     <body>
         <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom bg-light">Sistem Informasi Apotek</div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('/')}}">Dashboard</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Obat')}}">Data Obat</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Satuan')}}">Satuan Obat</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Jual')}}">Penjualan</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('Supplier')}}">Data Supplier</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('/logout')}}">Logout</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+            <!-- Sidebar -->
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" id = "sidebar-wrapper" style="width: 250px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-4">Sistem Informasi Apotek</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-white">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Obat" class="nav-link text-white">
+                        Data Obat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Satuan" class="nav-link text-white">
+                        Satuan Obat
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Jual" class="nav-link text-white">
+                        Penjualan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Supplier" class="nav-link text-white">
+                        Data Supplier
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/logout" class="nav-link text-white">
+                        Logout
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>{{auth()->user()->name}}</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/Obat/create">Tambah Data Obat</a></li>
+                        <li><a class="dropdown-item" href="/Satuan/create">Tambah Satuan Obat</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/login">Logout</a></li>
+                    </ul>
                 </div>
             </div>
+
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
-                <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
                     <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
-                                    </div>
+                        <a class="navbar-brand" href="/">{{auth()->user()->name}}</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarsExample01">
+                            <ul class="navbar-nav me-auto mb-2">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Register with another account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Logout</a>
                                 </li>
                             </ul>
                         </div>
