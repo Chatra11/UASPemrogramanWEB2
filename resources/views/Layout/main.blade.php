@@ -21,7 +21,7 @@
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active" aria-current="page">
+                        <a href="/" class="nav-link text-white">
                             Dashboard
                         </a>
                     </li>
@@ -50,14 +50,47 @@
                         Logout
                         </a>
                     </li>
-                    
                 </ul>
+                <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>{{auth()->user()->name}}</strong>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/Obat/create">Tambah Data Obat</a></li>
+                        <li><a class="dropdown-item" href="/Satuan/create">Tambah Satuan Obat</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/login">Logout</a></li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
+                <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="/">{{auth()->user()->name}}</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarsExample01">
+                            <ul class="navbar-nav me-auto mb-2">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register">Register with another account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
                 <!-- Top navigation-->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">
                         <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -77,7 +110,9 @@
                             </ul>
                         </div>
                     </div>
-                </nav>
+                </nav> -->
+
+
                 <!-- Page content-->
                 @yield('content')
 
