@@ -13,7 +13,7 @@
     <select name="id_harga" class="form-control form-control-sm" id="colFormLabelSm">
         <option value="">--Pilih Obat--</option>
         @foreach($obat as $value)
-            <option value="{{$value->id}}">{{$value->Nama_obat}}</option>
+            <option value="{{$value->id}}">{{$value->Kode_Obat}} | {{$value->Nama_obat}}</option>
         @endforeach
     </select>
     </div>
@@ -37,3 +37,5 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">SIMPAN</button>
+  <a class="btn btn-info"  href="{{url('Jual')}}">Kembali</a> <br></br>
+  

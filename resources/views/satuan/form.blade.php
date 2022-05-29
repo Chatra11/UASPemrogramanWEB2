@@ -8,3 +8,4 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">SIMPAN</button>
+  <a class="btn btn-info"  href="{{url('Satuan')}}">Kembali</a> <br></br>

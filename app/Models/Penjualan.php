@@ -14,7 +14,7 @@ class Penjualan extends Model
     public function obat(){
         return $this->belongsTo(Obat::class,'id_harga');
     }
-    public function getTotalHarga(){
-        return $this->obat()->sum(DB::raw('jumlah * Harga'));
+    public function jenis(){
+        return $this->belongsTo(Jenis::class,'id_jenis');
     }
 }

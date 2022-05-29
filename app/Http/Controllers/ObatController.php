@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ObatRequest;
+use App\Models\Jenis;
 use Illuminate\Http\Request;
 use App\Models\Obat;
 use App\Models\satuan;
@@ -20,7 +21,7 @@ class ObatController extends Controller
         $keyword = $request->keyword;
         $data_obat = Obat::where('Kode_Obat','LIKE','%'.$keyword.'%')
         ->orWhere('Nama_obat','LIKE','%'.$keyword.'%')
-        ->with('supplier','satuan')
+        ->with('supplier','satuan','jenis')
         ->paginate(2);
         $data_obat->withPath('Obat');
         $data_obat->append($request->all());
@@ -37,7 +38,8 @@ class ObatController extends Controller
         $model = new Obat;
         $supplai = Supplier::all();
         $satuan = satuan::all();
-        return view('obat.create',compact('model','supplai','satuan'));
+        $jenis = Jenis::all();
+        return view('obat.create',compact('model','supplai','satuan','jenis'));
     }
 
     /**
@@ -53,6 +55,7 @@ class ObatController extends Controller
         $model->id_supplai = $request->id_supplai;
         $model->Nama_obat = $request->Nama_obat;
         $model->id_satuan = $request->id_satuan;
+        $model->id_jenis = $request->id_jenis;
         $model->Stok = $request->Stok;        
         $model->Harga = $request->Harga;
         $model->save();
@@ -66,9 +69,10 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_obat)
+    public function show($id)
     {
-        //
+        $model = Obat::find($id);
+        return view('obat.show',compact('model'));
     }
 
     /**
@@ -79,10 +83,11 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
-        $model = Obat::with('supplier','satuan')->find($id);
+        $model = Obat::with('supplier','satuan','jenis')->find($id);
         $supplai = Supplier::all();
         $satuan = satuan::all();
-        return view('obat.edit',compact('model','supplai','satuan'));
+        $jenis = Jenis::all();
+        return view('obat.edit',compact('model','supplai','satuan','jenis'));
     }
 
     /**
@@ -99,6 +104,7 @@ class ObatController extends Controller
         $model->id_supplai = $request->id_supplai;
         $model->Nama_Obat = $request->Nama_obat;
         $model->id_satuan = $request->id_satuan;
+        $model->id_jenis = $request->id_jenis;
         $model->Stok = $request->Stok;
         $model->Harga = $request->Harga;
         $model->save();

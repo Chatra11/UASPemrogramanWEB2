@@ -36,8 +36,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Jual" class="nav-link text-white">
-                        Penjualan
+                        <a href="/Jenis" class="nav-link text-white">
+                        Jenis Obat
                         </a>
                     </li>
                     <li>
@@ -45,6 +45,12 @@
                         Data Supplier
                         </a>
                     </li>
+                    <li>
+                        <a href="/Jual" class="nav-link text-white">
+                        Penjualan
+                        </a>
+                    </li>
+
                     <li>
                         <a href="/logout" class="nav-link text-white">
                         Logout

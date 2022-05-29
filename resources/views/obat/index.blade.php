@@ -17,9 +17,10 @@
                 <th>Nama Obat</th>
                 <th>Supplier</th>
                 <th>Satuan</th>
+                <th>Jenis</th>
                 <th>Stok</th>
                 <th>Harga</th>
-                <th colspan="2">Aksi</th>
+                <th colspan="3">Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +30,10 @@
                 <td>{{$value->Nama_obat}}</td>
                 <td>{{$value->supplier->Nama_Supplier}}</td>
                 <td>{{$value->satuan->Nama_satuan}}</td>
+                <td>{{$value->jenis->Nama_Jenis}}</td>
                 <td>{{$value->Stok}}</td>
                 <td>{{$value->Harga}}</td>
+                <td><a class="btn btn-warning" href="{{ url('Obat/'.$value->id)}}">Detail</a></td>
                 <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id.'/edit')}}">Edit</a></td>
                 <td>    
                 

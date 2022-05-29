@@ -39,6 +39,17 @@
     </div>
   </div>
   <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Jenis</label>
+    <div class="col-sm-10">
+    <select name="id_jenis" class="form-control form-control-sm" id="colFormLabelSm">
+        <option value="">--Pilih Jenis--</option>
+        @foreach($jenis as $value)
+            <option value="{{$value->id}}">{{$value->Nama_Jenis}}</option>
+        @endforeach
+    </select>
+    </div>
+  </div>
+  <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Stok</label>
     <div class="col-sm-10">
       <input type="number" min="0" max ="1000"class="form-control form-control-sm" id="colFormLabelSm" name="Stok" value="{{$model->Stok}}">
@@ -57,3 +68,4 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary">SIMPAN</button>
+  <a class="btn btn-info"  href="{{url('Obat')}}">Kembali</a> <br></br>

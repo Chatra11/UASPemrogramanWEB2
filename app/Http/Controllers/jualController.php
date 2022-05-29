@@ -16,7 +16,7 @@ class jualController extends Controller
     public function index()
     {
         $dataJual = Penjualan::all();
-        $obat = Penjualan::with('obat')->get();
+        $obat = Penjualan::with('obat','jenis')->get();
         return view('jual.index',compact('dataJual','obat'));
     }
 
@@ -45,7 +45,7 @@ class jualController extends Controller
         $model->id_harga = $request->id_harga;
         $model->jumlah = $request->jumlah;
         $model->tanggal = $request->tanggal;
-        $model-> total =  $request->jumlah;
+        $model-> total =  $request->jumlah ;
         $model->save();
 
         return redirect('Jual');
@@ -59,7 +59,8 @@ class jualController extends Controller
      */
     public function show($id)
     {
-        //
+        $model = Penjualan::find($id);
+        return view('jual.show',compact('model'));
     }
 
     /**
@@ -70,9 +71,9 @@ class jualController extends Controller
      */
     public function edit($id)
     {
-        $model = Penjualan::find($id);
-        $obat = Obat::all();
-        return view('jual.edit',compact('model','obat'));
+        // $model = Penjualan::find($id);
+        // $obat = Obat::all();
+        // return view('jual.edit',compact('model','obat'));
     }
 
     /**
@@ -84,13 +85,13 @@ class jualController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = Penjualan::find($id);
-        $model-> No_Nota = $request->nota;
-        $model-> jumlah = $request->jumlah;
-        $model-> tanggal = $request->tanggal;
-        $model->save();
+        // $model = Penjualan::find($id);
+        // $model-> No_Nota = $request->nota;
+        // $model-> jumlah = $request->jumlah;
+        // $model-> tanggal = $request->tanggal;
+        // $model->save();
 
-        return redirect('Jual');
+        // return redirect('Jual');
     }
 
     /**

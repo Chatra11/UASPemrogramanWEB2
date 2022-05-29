@@ -19,6 +19,9 @@ class Obat extends Model
     public function satuan(){
         return $this->belongsTo(satuan::class,'id_satuan');
     }
+    public function jenis(){
+        return $this->belongsTo(Jenis::class,'id_jenis');
+    }
 
     public function jual(){
         return $this->hasMany(Obat::class);
