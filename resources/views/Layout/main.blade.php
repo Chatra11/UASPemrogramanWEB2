@@ -46,11 +46,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Jual" class="nav-link text-white">
-                        Penjualan
+                        <a href="/Beli" class="nav-link text-white">
+                        Obat Masuk
                         </a>
                     </li>
-
+                    <li>
+                        <a href="/Jual" class="nav-link text-white">
+                        Obat Keluar
+                        </a>
+                    </li>
                     <li>
                         <a href="/logout" class="nav-link text-white">
                         Logout

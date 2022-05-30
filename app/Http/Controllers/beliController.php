@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jenis;
 use App\Models\Obat;
-use App\Models\Penjualan;
+use App\Models\pembelian;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
-class jualController extends Controller
+class beliController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class jualController extends Controller
      */
     public function index()
     {
-        $dataJual = Penjualan::all();
-        $obat = Penjualan::with('obat','jenis')->get();
-        return view('jual.index',compact('dataJual','obat'));
+        $databeli = pembelian::all();
+        $obat = pembelian::with('obat','supplai')->get();
+        return view('beli.index',compact('databeli'));
     }
 
     /**
@@ -28,10 +28,10 @@ class jualController extends Controller
      */
     public function create()
     {
-        $model = new Penjualan;
+        $model = new pembelian;
         $obat = Obat::all();
-        $jenis = Jenis::all();
-        return view('jual.create',compact('model','obat','jenis'));
+        $supplier = Supplier::all();
+        return view('beli.create',compact('model','obat','supplier'));
     }
 
     /**
@@ -42,16 +42,16 @@ class jualController extends Controller
      */
     public function store(Request $request)
     {
-        $model = new Penjualan;
-        $model->No_Nota = $request->No_Nota;
-        $model->id_harga = $request->id_harga;
-        $model->id_jenis = $request->id_jenis;
-        $model->jumlah = $request->jumlah;
-        $model->tanggal = $request->tanggal;
-        $model-> total =  $request->jumlah ;
+        $model = new pembelian;
+        $model->Nota_beli = $request->Nota_beli;
+        $model->id_nama = $request->id_nama;
+        $model->id_supplai = $request->id_supplai;
+        $model->jmlh_beli = $request->jmlh_beli;
+        $model->harga_beli = $request->harga_beli;
+        $model->total_beli = $request->harga_beli * $request->jmlh_beli ;
         $model->save();
 
-        return redirect('Jual');
+        return redirect('Beli');
     }
 
     /**
@@ -62,8 +62,8 @@ class jualController extends Controller
      */
     public function show($id)
     {
-        $model = Penjualan::find($id);
-        return view('jual.show',compact('model'));
+        $model = pembelian::find($id);
+        return view('beli.show',compact('model'));
     }
 
     /**
@@ -74,9 +74,7 @@ class jualController extends Controller
      */
     public function edit($id)
     {
-        // $model = Penjualan::find($id);
-        // $obat = Obat::all();
-        // return view('jual.edit',compact('model','obat'));
+        //
     }
 
     /**
@@ -88,13 +86,7 @@ class jualController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $model = Penjualan::find($id);
-        // $model-> No_Nota = $request->nota;
-        // $model-> jumlah = $request->jumlah;
-        // $model-> tanggal = $request->tanggal;
-        // $model->save();
-
-        // return redirect('Jual');
+        //
     }
 
     /**
@@ -105,9 +97,9 @@ class jualController extends Controller
      */
     public function destroy($id)
     {
-        $model = Penjualan::find($id);
+        $model = pembelian::find($id);
         $model->delete();
 
-        return redirect('Jual');
+        return redirect('Beli');
     }
 }

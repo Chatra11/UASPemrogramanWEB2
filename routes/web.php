@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\beliController;
 use App\Http\Controllers\jenisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -33,3 +34,4 @@ Route::resource('Supplier', supplierController::class)->middleware('auth');
 Route::resource('Satuan', satuanController::class)->middleware('auth');
 Route::resource('Jual', jualController::class)->middleware('auth');
 Route::resource('Jenis', jenisController::class)->middleware('auth');
+Route::resource('Beli', beliController::class)->middleware('auth');

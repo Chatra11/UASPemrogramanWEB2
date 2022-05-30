@@ -17,4 +17,9 @@ class Penjualan extends Model
     public function jenis(){
         return $this->belongsTo(Jenis::class,'id_jenis');
     }
+
+    public function Jumlah(){
+        return $this->hasMany(Obat::class);
+    }
+
 }

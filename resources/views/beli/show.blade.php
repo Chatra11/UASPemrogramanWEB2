@@ -1,35 +1,35 @@
 @extends('layout.main')
 @section('content')
-    <h2 style= "text-align:Center">Detail Penjualan</h2>
+    <h2 style= "text-align:Center">Detail Pembelian</h2>
     <table class="table-bordered table">
         <thead>
             <tr>
-                <th>No Nota</th>
-                <td>{{$model->No_Nota}}</td>
+                <th>Nota</th>
+                <td>{{$model->Nota_beli}}</td>
             </tr>
             <tr>
                 <th>Nama Obat</th>
                 <td>{{$model->obat->Nama_obat}}</td>
             </tr>
             <tr>
-                <th>Jenis Obat</th>
-                <td>{{$model->jenis->Nama_Jenis}}</td>
+                <th>Supplier</th>
+                <td>{{$model->supplai->Nama_Supplier}}</td>
             </tr>
             <tr>
                 <th>Jumlah</th>
-                <td>{{$model->jumlah}}</td>
+                <td>{{$model->jmlh_beli}}</td>
             </tr>
             <tr>
                 <th>Total Harga</th> 
-                <td>Rp. {{$model->obat->Harga * $model->jumlah}}</td>
+                <td>{{$model->harga_beli * $model->jmlh_beli}}</td>
             </tr>
             <tr>
                 <th>Tanggal</th></th>
-                <td>{{$model->tanggal}}</td>
+                <td>{{$model->created_at}}</td>
             </tr>
         </thead>     
             <th>
-                <a class="btn btn-info"  href="{{url('Jual')}}">Kembali</a> <br></br>
+                <a class="btn btn-info"  href="{{url('Beli')}}">Kembali</a> <br></br>
             </th>
     </table>
 @endsection

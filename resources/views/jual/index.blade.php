@@ -20,7 +20,7 @@
                 <td>{{$value->obat->Nama_obat}}</td>
                 <td>{{$value->jumlah}}</td>
                 <td>{{$value->tanggal}}</td>
-                <td>{{$value->obat->Harga * $value->jumlah}}</td>
+                <td>Rp. {{$value->obat->Harga * $value->jumlah}}</td>
                 <td><a class="btn btn-warning" href="{{ url('Jual/'.$value->id)}}">Detail</a></td>
                 <td>    
                     <form action="{{url('Jual/'.$value->id) }}" method="POST">

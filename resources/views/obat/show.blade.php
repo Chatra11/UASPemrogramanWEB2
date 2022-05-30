@@ -21,15 +21,15 @@
             </tr>
             <tr>
                 <th>Stok</th> 
-                <td>{{$model->Stok}}</td>
+                <td>{{$jumlahstok}}</td>
             </tr>
             <tr>
                 <th>Harga</th> 
-                <td>{{$model->Harga}}</td>
+                <td>Rp. {{$model->Harga}}</td>
             </tr>
         </thead>     
             <th>
-                <a class="btn btn-info"  href="{{url('Jual')}}">Kembali</a> <br></br>
+                <a class="btn btn-info"  href="{{url('Obat')}}">Kembali</a> <br></br>
             </th>
     </table>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Requests\ObatRequest;
 use App\Models\Jenis;
 use Illuminate\Http\Request;
 use App\Models\Obat;
+use App\Models\Penjualan;
 use App\Models\satuan;
 use App\Models\Supplier;
 
@@ -21,7 +22,7 @@ class ObatController extends Controller
         $keyword = $request->keyword;
         $data_obat = Obat::where('Kode_Obat','LIKE','%'.$keyword.'%')
         ->orWhere('Nama_obat','LIKE','%'.$keyword.'%')
-        ->with('supplier','satuan','jenis')
+        ->with('supplier','satuan','jenis','jumlah')
         ->paginate(2);
         $data_obat->withPath('Obat');
         $data_obat->append($request->all());
@@ -51,12 +52,14 @@ class ObatController extends Controller
     public function store(ObatRequest $request)
     {
         $model = new Obat;
+        $jumlah = Penjualan::find($model->id_jumlah);
+        $jumlahstok = $model->Stok - $jumlah->jumlah; 
         $model->Kode_Obat = $request->Kode_Obat;
         $model->id_supplai = $request->id_supplai;
         $model->Nama_obat = $request->Nama_obat;
         $model->id_satuan = $request->id_satuan;
         $model->id_jenis = $request->id_jenis;
-        $model->Stok = $request->Stok;        
+        $model->Stok = $jumlahstok;        
         $model->Harga = $request->Harga;
         $model->save();
 
@@ -72,7 +75,9 @@ class ObatController extends Controller
     public function show($id)
     {
         $model = Obat::find($id);
-        return view('obat.show',compact('model'));
+        $jumlah = Penjualan::find($model->id_jumlah);
+        $jumlahstok = $model->Stok - $jumlah->jumlah; 
+        return view('obat.show',compact('model','jumlahstok'));
     }
 
     /**
