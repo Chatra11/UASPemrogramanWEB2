@@ -3,14 +3,25 @@
     @if(Session::has('success'))
         <p class ="alert alert-success">{{ Session::get('success')}}</p>
     @endif
-    <a class="btn btn-info"  href="{{url('Obat\create')}}">Tambah</a> <br></br>
-    </br>
-    <form method="GET" action="{{url('Obat')}}" >
-        <input type="text"name ="keyword" value="{{ $keyword }}"/>
-        <button type ="submit">Search</button>
-    </form>
-    </br>
+    <br></br>
+
+    <h2 style= "text-align:Center">Data Obat</h2>
+
     <table class="table-bordered table">
+    <div class="container">
+        <form method="GET" action="{{url('Obat')}}" >
+            <input type="text"name ="keyword" value="{{ $keyword }}"/>
+            <button class ="btn btn-secondary"type ="submit">Search</button>
+        </form>
+    <div class="row">
+
+        <div class="col-md-12 bg-light text-right">
+            <a class="btn btn-primary"  href="{{url('Obat\create')}}">Tambah</a>
+        </div>
+    </div>
+</div>
+
+    
         <thead>
             <tr>
                 <th>Kode Obat</th>

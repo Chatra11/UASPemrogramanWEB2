@@ -3,15 +3,23 @@
     @if(Session::has('success'))
         <p class ="alert alert-success">{{ Session::get('success')}}</p>
     @endif
-    <a class="btn btn-info"  href="{{url('Jenis\create')}}">Tambah</a> <br></br>
-    </br>
-    <form method="GET" action="{{url('Jenis')}}" >
-        <input type="text"name ="keyword" value="{{ $keyword }}"/>
-        <button type ="submit">Search</button>
-    </form>
-    </br>
-    <h2 style= "text-align:Center">Jenis</h2>
+    <br></br>
+
+    <h2 style= "text-align:Center">Jenis Obat</h2>
+
     <table class="table-bordered table">
+    <div class="container">
+        <form method="GET" action="{{url('Jenis')}}" >
+            <input type="text"name ="keyword" value="{{ $keyword }}"placeholder="Masukan Keyword"/>
+            <button class ="btn btn-secondary"type ="submit">Search</button>
+        </form>
+    <div class="row">
+
+        <div class="col-md-12 bg-light text-right">
+            <a class="btn btn-primary"  href="{{url('Jenis\create')}}">Tambah</a>
+        </div>
+    </div>
+</div>
         <thead>
             <tr>
                 <th>No</th>

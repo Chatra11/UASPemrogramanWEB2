@@ -8,7 +8,13 @@
         <title>Sistem Informasi Apotek</title>
         <!-- Favicon-->
         <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
     </head>
     <body>
@@ -90,6 +96,9 @@
                                 
                                 <li class="nav-item">
                                     <a class="nav-link" href="/register">Register with another account</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/About">About Us</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/login">Logout</a>

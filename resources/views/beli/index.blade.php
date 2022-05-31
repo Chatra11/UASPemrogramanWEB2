@@ -2,6 +2,13 @@
 @section('content')
     <h2 style= "text-align:Center">Pembelian</h2>
     <table class="table-bordered table">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-light text-right">
+            <a class="btn btn-primary"  href="{{url('Beli\create')}}">Tambah</a>
+        </div>
+    </div>
+</div>
         <thead>
             <tr>
                 <th>Nota</th>
@@ -33,7 +40,6 @@
                 </td>
             </tr>
             @endforeach
-            <a class="btn btn-info"  href="{{url('Beli/create')}}">Tambah</a> <br></br>
         </tbody>
     </table>
 @endsection
