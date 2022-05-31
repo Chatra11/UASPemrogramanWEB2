@@ -28,7 +28,7 @@
       <div class="container">
         <h2>Al Chatra Syarifudin</h2>
         <p>2010817310007</p>
-        <p></p><a href="https://github.com/Chatra11">
+        <p><a href="https://github.com/Chatra11">
         <i class="fa fa-github"> 
             Chatra Github
         </i>

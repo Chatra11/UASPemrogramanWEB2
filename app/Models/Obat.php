@@ -27,7 +27,9 @@ class Obat extends Model
     }
 
     public function jual(){
-        return $this->hasMany(Obat::class);
+        return $this->hasone(Obat::class);
     }
-
+    public function beli(){
+        return $this->hasone(Obat::class);
+    }
 }

@@ -26,7 +26,7 @@ class SupplierRequest extends FormRequest
         return [
             'Nama_Supplier'=>'required',
             'Alamat'=>'required',
-            'Telepon'=>'required'
+            'Telepon'=>'required|numeric|digits:12'
         ];
     }
 }

@@ -16,7 +16,11 @@
     <div class="row">
 
         <div class="col-md-12 bg-light text-right">
-            <a class="btn btn-primary"  href="{{url('Satuan\create')}}">Tambah</a>
+            <a class="btn btn-primary"  href="{{url('Satuan\create')}}">            
+            <i class="fa fa-plus">
+               Tambah
+            </i>    
+            </a>
         </div>
     </div>
 </div>
@@ -37,7 +41,11 @@
                     <form action="{{url('Satuan/'.$value->id) }}" method="POST" onsubmit="return confirm('Lanjut Hapus Data ?')">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-danger" type= "submit">Delete</button>
+                    <button class="btn btn-danger" type= "submit">                    
+                    <i class="fa fa-trash">
+                        Delete
+                    </i>    
+                    </button>
                     </form>
                 </td>
             </tr>

@@ -20,10 +20,13 @@
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Supplier</label>
     <div class="col-sm-10">
     <select  class="form-control form-control-sm" name="id_supplai" id="id_supplai">
-        <option value="">--Pilih Supplier--</option>
+        <option value="{{$model->id_supplai}}">--Pilih Supplier--</option>
         @foreach($supplai as $value)
             <option value="{{$value->id}}">{{$value->Nama_Supplier}}</option>
         @endforeach
+        @foreach($errors->get('id_supplai') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+        @endforeach  
     </select>
     </div>
   </div>
@@ -31,7 +34,7 @@
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Satuan</label>
     <div class="col-sm-10">
     <select name="id_satuan" class="form-control form-control-sm" id="colFormLabelSm">
-        <option value="">--Pilih Satuan--</option>
+        <option value="{{$model->id_satuan}}">--Pilih Satuan--</option>
         @foreach($satuan as $value)
             <option value="{{$value->id}}">{{$value->Nama_satuan}}</option>
         @endforeach
@@ -42,7 +45,7 @@
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Jenis</label>
     <div class="col-sm-10">
     <select name="id_jenis" class="form-control form-control-sm" id="colFormLabelSm">
-        <option value="">--Pilih Jenis--</option>
+        <option value="{{$model->id_jenis}}">--Pilih Jenis--</option>
         @foreach($jenis as $value)
             <option value="{{$value->id}}">{{$value->Nama_Jenis}}</option>
         @endforeach

@@ -26,9 +26,10 @@ class ObatRequest extends FormRequest
         return [
             'Kode_Obat'=>'required',
             'Nama_obat'=>'required',
-            // 'id_supplai'=>'required',
+            'id_supplai'=>'required',
+            'id_jenis'=>'required',
             'Stok'=>'required',
-            'Harga'=>'required'
+            'Harga'=>'required|numeric'
         ];
     }
 }

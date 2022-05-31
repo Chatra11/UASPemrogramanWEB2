@@ -16,9 +16,8 @@ class jualController extends Controller
      */
     public function index()
     {
-        $dataJual = Penjualan::all();
-        $obat = Penjualan::with('obat','jenis')->get();
-        return view('jual.index',compact('dataJual','obat'));
+        $dataJual = Penjualan::with('obat','jenis')->paginate(3);
+        return view('jual.index',compact('dataJual'));
     }
 
     /**
@@ -51,7 +50,7 @@ class jualController extends Controller
         $model-> total =  $request->jumlah ;
         $model->save();
 
-        return redirect('Jual');
+        return redirect('Jual')->with('success','Data Berhasil Di Simpan');
     }
 
     /**
@@ -108,6 +107,6 @@ class jualController extends Controller
         $model = Penjualan::find($id);
         $model->delete();
 
-        return redirect('Jual');
+        return redirect('Jual')->with('success','Data Berhasil Di Hapus');
     }
 }

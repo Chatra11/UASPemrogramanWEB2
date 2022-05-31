@@ -14,5 +14,9 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         });
     }
+    $('.nav nav-pills flex-column mb-auto').click(function(){
+        $('.nav nav-pills flex-column mb-auto .active').removeClass('active');
+        $(this).parent().addClass('active');
+    });
 
 });

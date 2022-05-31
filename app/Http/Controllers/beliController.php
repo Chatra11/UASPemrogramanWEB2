@@ -14,10 +14,9 @@ class beliController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $databeli = pembelian::all();
-        $obat = pembelian::with('obat','supplai')->get();
+    public function index(){
+        $databeli = pembelian::with('obat','supplai')
+        ->paginate(4);
         return view('beli.index',compact('databeli'));
     }
 
@@ -51,7 +50,7 @@ class beliController extends Controller
         $model->total_beli = $request->harga_beli * $request->jmlh_beli ;
         $model->save();
 
-        return redirect('Beli');
+        return redirect('Beli')->with('success','Data Berhasil Di Simpan');
     }
 
     /**
@@ -100,6 +99,6 @@ class beliController extends Controller
         $model = pembelian::find($id);
         $model->delete();
 
-        return redirect('Beli');
+        return redirect('Beli')->with('success','Data Berhasil Di Hapus');
     }
 }
