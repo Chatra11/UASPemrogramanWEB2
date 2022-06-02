@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\beliController;
-use App\Http\Controllers\jenisController;
+use App\Models\Obat;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\beliController;
 use App\Http\Controllers\jualController;
 use App\Http\Controllers\ObatController;
+use App\Http\Controllers\jenisController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\satuanController;
 use App\Http\Controllers\supplierController;
 
@@ -20,7 +22,13 @@ use App\Http\Controllers\supplierController;
 |
 */
 
-Route::get('/', function () {return view('welcome');})->middleware('auth');
+Route::get('/', function () {
+    $jumlahobat = Obat::count();
+    $jumlahsupplier = Supplier::count();
+
+    return view('welcome', compact('jumlahobat'), compact('jumlahsupplier'));
+
+})->middleware('auth');
 Route::get('/About', function () {return view('about');})->middleware('auth');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
