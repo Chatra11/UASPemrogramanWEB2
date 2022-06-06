@@ -44,7 +44,7 @@ class jualController extends Controller
     {
         $model = new Penjualan;
         $model->No_Nota = $request->No_Nota;
-        $model->id_harga = $request->id_harga;
+        $model->id_nama = $request->id_nama;
         $model->id_jenis = $request->id_jenis;
         $model->jumlah = $request->jumlah;
         $model->tanggal = $request->tanggal;

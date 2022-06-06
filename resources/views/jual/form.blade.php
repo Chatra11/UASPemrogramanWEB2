@@ -10,7 +10,7 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nama Obat</label>
     <div class="col-sm-10">
-    <select name="id_harga" class="form-control form-control-sm" id="colFormLabelSm">
+    <select name="id_nama" class="form-control form-control-sm" id="colFormLabelSm">
         <option value="">--Pilih Obat--</option>
         @foreach($obat as $value)
             <option value="{{$value->id}}">{{$value->Kode_Obat}} | {{$value->Nama_obat}}</option>

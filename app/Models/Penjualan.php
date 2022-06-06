@@ -12,14 +12,10 @@ class Penjualan extends Model
     protected $table = "penjualan";
 
     public function obat(){
-        return $this->belongsTo(Obat::class,'id_harga');
+        return $this->belongsTo(Obat::class,'id_nama');
     }
     public function jenis(){
         return $this->belongsTo(Jenis::class,'id_jenis');
-    }
-
-    public function Jumlah(){
-        return $this->hasMany(Obat::class);
     }
 
 }
