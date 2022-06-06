@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Jun 2022 pada 08.24
+-- Waktu pembuatan: 06 Jun 2022 pada 16.20
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -114,7 +114,7 @@ INSERT INTO `pembelian` (`id`, `Nota_beli`, `id_nama`, `id_supplai`, `jmlh_beli`
 
 CREATE TABLE `penjualan` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `id_harga` bigint(20) UNSIGNED NOT NULL,
+  `id_nama` bigint(20) UNSIGNED NOT NULL,
   `id_jenis` bigint(20) UNSIGNED NOT NULL,
   `No_Nota` int(11) NOT NULL,
   `jumlah` int(11) DEFAULT NULL,
@@ -128,12 +128,13 @@ CREATE TABLE `penjualan` (
 -- Dumping data untuk tabel `penjualan`
 --
 
-INSERT INTO `penjualan` (`id`, `id_harga`, `id_jenis`, `No_Nota`, `jumlah`, `tanggal`, `total`, `created_at`, `updated_at`) VALUES
+INSERT INTO `penjualan` (`id`, `id_nama`, `id_jenis`, `No_Nota`, `jumlah`, `tanggal`, `total`, `created_at`, `updated_at`) VALUES
 (2, 7, 1, 101, 2, '2022-04-14', 2, '2022-05-28 00:23:16', '2022-05-28 00:23:16'),
 (3, 8, 2, 102, 3, '2022-05-27', 3, '2022-05-28 06:31:30', '2022-05-28 06:31:30'),
 (4, 9, 2, 103, 2, '2022-05-06', 2, '2022-05-28 06:33:46', '2022-05-28 06:33:46'),
 (5, 11, 3, 104, 2, '2022-05-29', 2, '2022-05-29 06:55:06', '2022-05-29 06:55:06'),
-(6, 11, 3, 106, 3, '2022-05-31', 3, '2022-05-30 07:28:13', '2022-05-30 07:28:13');
+(6, 11, 3, 106, 3, '2022-05-31', 3, '2022-05-30 07:28:13', '2022-05-30 07:28:13'),
+(8, 17, 5, 107, 30, '2022-06-06', 30, '2022-06-06 06:09:26', '2022-06-06 06:09:26');
 
 -- --------------------------------------------------------
 
@@ -308,13 +309,17 @@ ALTER TABLE `password_resets`
 -- Indeks untuk tabel `pembelian`
 --
 ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_nama` (`id_nama`),
+  ADD KEY `id_supplai` (`id_supplai`);
 
 --
 -- Indeks untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_harga` (`id_nama`),
+  ADD KEY `id_jenis` (`id_jenis`);
 
 --
 -- Indeks untuk tabel `personal_access_tokens`
@@ -384,7 +389,7 @@ ALTER TABLE `pembelian`
 -- AUTO_INCREMENT untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -425,6 +430,20 @@ ALTER TABLE `_obat`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `pembelian`
+--
+ALTER TABLE `pembelian`
+  ADD CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_nama`) REFERENCES `_obat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pembelian_ibfk_2` FOREIGN KEY (`id_supplai`) REFERENCES `supplier` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `penjualan`
+--
+ALTER TABLE `penjualan`
+  ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`id_nama`) REFERENCES `_obat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `penjualan_ibfk_2` FOREIGN KEY (`id_jenis`) REFERENCES `_jenis` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `_obat`
