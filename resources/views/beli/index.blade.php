@@ -3,6 +3,7 @@
 @if(Session::has('success'))
     <p class ="alert alert-success">{{ Session::get('success')}}</p>
 @endif
+</br>
     <h2 style= "text-align:Center">Pembelian</h2>
     <table class="table-bordered table">
     <div class="container">

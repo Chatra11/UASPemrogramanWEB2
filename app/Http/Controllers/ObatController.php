@@ -22,8 +22,8 @@ class ObatController extends Controller
         $keyword = $request->keyword;
         $data_obat = Obat::where('Kode_Obat','LIKE','%'.$keyword.'%')
         ->orWhere('Nama_obat','LIKE','%'.$keyword.'%')
-        ->with('supplier','satuan','jenis','jumlah')
-        ->paginate(2);
+        ->with('supplier','satuan','jenis')
+        ->paginate(4);
         $data_obat->withPath('Obat');
         $data_obat->append($request->all());
         return view('obat.index',compact('data_obat','keyword'));
@@ -53,13 +53,12 @@ class ObatController extends Controller
     {
         $model = new Obat;
         $jumlah = Penjualan::find($model->id_jumlah);
-        $jumlahstok = $model->Stok - $jumlah->jumlah; 
         $model->Kode_Obat = $request->Kode_Obat;
         $model->id_supplai = $request->id_supplai;
         $model->Nama_obat = $request->Nama_obat;
         $model->id_satuan = $request->id_satuan;
         $model->id_jenis = $request->id_jenis;
-        $model->Stok = $jumlahstok;        
+        $model->Stok = $request->Stok;        
         $model->Harga = $request->Harga;
         $model->save();
 
@@ -76,8 +75,7 @@ class ObatController extends Controller
     {
         $model = Obat::find($id);
         $jumlah = Penjualan::find($model->id_jumlah);
-        $jumlahstok = $model->Stok - $jumlah->jumlah; 
-        return view('obat.show',compact('model','jumlahstok'));
+        return view('obat.show',compact('model'));
     }
 
     /**

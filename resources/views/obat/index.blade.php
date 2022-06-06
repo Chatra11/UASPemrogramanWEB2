@@ -10,7 +10,7 @@
     <table class="table-bordered table">
     <div class="container">
         <form method="GET" action="{{url('Obat')}}" >
-            <input type="text"name ="keyword" value="{{ $keyword }}"/>
+            <input type="text"name ="keyword" value="{{ $keyword }}"placeholder="Masukan Keyword"/>
             <button class ="btn btn-secondary"type ="submit">Search</button>
         </form>
     <div class="row">
@@ -46,12 +46,7 @@
                 <td>{{$value->supplier->Nama_Supplier}}</td>
                 <td>{{$value->satuan->Nama_satuan}}</td>
                 <td>{{$value->jenis->Nama_Jenis}}</td>
-                @if(isset($value->jumlah->jumlah))
-                    <td>{{($value->Stok) - ($value->jumlah->jumlah)}}</td>
-                @endif
-                @if(!isset($value->jumlah->jumlah))
-                    <td>{{($value->Stok)}}</td>
-                @endif
+                <td>{{($value->Stok)}}</td>
                 <td>Rp.{{$value->Harga}}</td>
                 <td><a class="btn btn-warning" href="{{ url('Obat/'.$value->id)}}">Detail</a></td>
                 <td><a class="btn btn-info" href="{{ url('Obat/'.$value->id.'/edit')}}">Edit</a></td>

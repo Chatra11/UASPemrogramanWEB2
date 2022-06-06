@@ -22,14 +22,4 @@ class Obat extends Model
     public function jenis(){
         return $this->belongsTo(Jenis::class,'id_jenis');
     }
-    public function jumlah(){
-        return $this->belongsTo(Penjualan::class,'id_jumlah');
-    }
-
-    public function jual(){
-        return $this->hasone(Obat::class);
-    }
-    public function beli(){
-        return $this->hasone(Obat::class);
-    }
 }

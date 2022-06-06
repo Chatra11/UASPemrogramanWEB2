@@ -19,7 +19,7 @@ class supplierController extends Controller
         $data_supplai = ModelsSupplier::where('Nama_Supplier',"LIKE",'%'.$keyword.'%')
             ->orWhere('Telepon',"LIKE",'%'.$keyword.'%')
             ->orWhere('Alamat',"LIKE",'%'.$keyword.'%')
-            ->paginate(2);
+            ->paginate(4);
         $data_supplai->withPath('Supplier');
         $data_supplai->append($request->all());
         return view('supplier.index',compact('data_supplai','keyword'));

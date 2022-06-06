@@ -10,7 +10,7 @@
 <table class="table-bordered table">
 <div class="container">
     <form method="GET" action="{{url('Supplier')}}" >
-        <input type="text"name ="keyword" value="{{ $keyword }}"/>
+        <input type="text"name ="keyword" value="{{ $keyword }}"placeholder="Masukan Keyword"/>
         <button class ="btn btn-secondary"type ="submit">Search</button>
     </form>
 <div class="row">

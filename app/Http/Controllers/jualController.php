@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PenjualanRequest;
 use App\Models\Jenis;
 use App\Models\Obat;
 use App\Models\Penjualan;
@@ -39,7 +40,7 @@ class jualController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PenjualanRequest $request)
     {
         $model = new Penjualan;
         $model->No_Nota = $request->No_Nota;

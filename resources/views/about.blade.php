@@ -3,7 +3,7 @@
 <div class="about-section">
   <h1>About Us</h1>
   <p>Sistem Informasi Apotek ini dibangun untuk keperluan UAS Pemrograman Web 2</p>
-  <p>SI Apotek ini Dibangun menggunakan Framework Laravel 9 </p>
+  <p>SI Apotek ini Dibangun menggunakan Framework Laravel </p>
 </div>
 
 <h2 style="text-align:center">Our Team</h2>

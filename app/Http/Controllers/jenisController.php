@@ -17,7 +17,7 @@ class jenisController extends Controller
     {
         $keyword = $request->keyword;
         $datajenis = Jenis::where('Nama_Jenis',"LIKE",'%'.$keyword.'%')
-        ->paginate(2);
+        ->paginate(4);
         $datajenis->withPath('Jenis');
         $datajenis->append($request->all());
         return view('jenis.index',compact('datajenis','keyword'));

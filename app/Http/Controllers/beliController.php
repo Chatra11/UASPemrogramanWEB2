@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\pembelianRequest;
 use App\Models\Obat;
 use App\Models\pembelian;
 use App\Models\Supplier;
@@ -39,7 +40,7 @@ class beliController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(pembelianRequest $request)
     {
         $model = new pembelian;
         $model->Nota_beli = $request->Nota_beli;

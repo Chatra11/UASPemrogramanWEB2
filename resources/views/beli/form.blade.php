@@ -1,7 +1,7 @@
 <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">No Nota</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Nota_beli" value="{{$model->Nota_beli}}">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Nota_beli" value="{{$model->Nota_beli}}"placeholder="Masukan Nota Pembelian">
       @foreach($errors->get('Nota_beli') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach    
@@ -32,8 +32,8 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Jumlah</label>
     <div class="col-sm-10">
-      <input type="number" min="1" max ="100"class="form-control form-control-sm" id="colFormLabelSm" name="jmlh_beli" value="{{$model->jmlh_beli}}">
-      @foreach($errors->get('jumlah') as $msg)
+      <input type="number" min="1" max ="100"class="form-control form-control-sm" id="colFormLabelSm" name="jmlh_beli" value="{{$model->jmlh_beli}}"placeholder="Masukan Jumlah Pembelian">
+      @foreach($errors->get('jmlh_beli') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach
     </div>
@@ -41,7 +41,7 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Harga</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="harga_beli" value="{{$model->jmlh_beli}}">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="harga_beli" value="{{$model->jmlh_beli}}"placeholder="Masukan Harga Pembelian">
       @foreach($errors->get('harga_beli') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach

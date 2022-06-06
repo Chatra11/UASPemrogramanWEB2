@@ -17,7 +17,7 @@ class satuanController extends Controller
     {
         $keyword = $request->keyword;
         $datasatuan = satuan::where('Nama_satuan',"LIKE",'%'.$keyword.'%')
-        ->paginate(1);
+        ->paginate(4);
         $datasatuan->withPath('Satuan');
         $datasatuan->append($request->all());
         return view('satuan.index',compact('datasatuan','keyword'));

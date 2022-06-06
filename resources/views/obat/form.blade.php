@@ -1,7 +1,7 @@
 <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Kode Obat</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Kode_Obat" value="{{$model->Kode_Obat}}">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Kode_Obat" value="{{$model->Kode_Obat}}"placeholder="Masukan Kode Obat">
       @foreach($errors->get('Kode_Obat') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach    
@@ -10,7 +10,7 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nama Obat</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Nama_obat" value="{{$model->Nama_obat}}">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Nama_obat" value="{{$model->Nama_obat}}"placeholder="Masukan Nama Obat">
       @foreach($errors->get('Nama_obat') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach
@@ -55,7 +55,7 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Stok</label>
     <div class="col-sm-10">
-      <input type="number" min="0" max ="1000"class="form-control form-control-sm" id="colFormLabelSm" name="Stok" value="{{$model->Stok}}">
+      <input type="number" min="0" max ="1000"class="form-control form-control-sm" id="colFormLabelSm" name="Stok" value="{{$model->Stok}}"placeholder = "Stok Obat">
       @foreach($errors->get('Stok') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach
@@ -64,7 +64,7 @@
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Harga</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Harga" value="{{$model->Harga}}">
+      <input type="text" class="form-control form-control-sm" id="colFormLabelSm" name="Harga" value="{{$model->Harga}}"placeholder="Masukan Harga Obat">
       @foreach($errors->get('Harga') as $msg)
             <p class="text-danger">{{ $msg }}</p>
         @endforeach

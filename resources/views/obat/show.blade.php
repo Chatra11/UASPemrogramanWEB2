@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <th>Stok</th> 
-                <td>{{$jumlahstok}}</td>
+                <td>{{$model->Stok}}</td>
             </tr>
             <tr>
                 <th>Harga</th> 
